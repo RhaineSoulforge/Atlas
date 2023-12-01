@@ -4,4 +4,9 @@ bin/
 bin-int/
 
 # Files
-.user
+*.user
+.vs/Atlas/FileContentIndex/1271f7bd-66fb-4608-a40a-0aeef11b5bac.vsidx
+*.vsidx
+.vs/Atlas/v17/.suo
+.vs/Atlas/v17/Browse.VC.db
+.vs/Atlas/v17/Solution.VC.db

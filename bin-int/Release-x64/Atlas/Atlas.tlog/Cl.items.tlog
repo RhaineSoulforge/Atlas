@@ -1,1 +1,3 @@
-C:\dev\Atlas\Atlas\src\Test.cpp;C:\dev\Atlas\bin-int\Release-x64\Atlas\Test.obj
+C:\dev\Atlas\Atlas\src\Atlas\Application.cpp;C:\dev\Atlas\bin-int\Release-x64\Atlas\Application.obj
+C:\dev\Atlas\Atlas\src\Atlas\ATLogger.cpp;C:\dev\Atlas\bin-int\Release-x64\Atlas\ATLogger.obj
+C:\dev\Atlas\Atlas\src\Atlas\CString.cpp;C:\dev\Atlas\bin-int\Release-x64\Atlas\CString.obj

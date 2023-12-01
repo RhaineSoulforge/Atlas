@@ -1,5 +1,7 @@
 c:\dev\atlas\bin-int\release-x64\atlas\vc143.pdb
-c:\dev\atlas\bin-int\release-x64\atlas\test.obj
+c:\dev\atlas\bin-int\release-x64\atlas\cstring.obj
+c:\dev\atlas\bin-int\release-x64\atlas\atlogger.obj
+c:\dev\atlas\bin-int\release-x64\atlas\application.obj
 c:\dev\atlas\bin\release-x64\atlas\atlas.dll
 c:\dev\atlas\bin-int\release-x64\atlas\atlas.ipdb
 c:\dev\atlas\bin\release-x64\atlas\atlas.pdb
