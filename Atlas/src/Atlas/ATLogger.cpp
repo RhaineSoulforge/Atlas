@@ -1,8 +1,10 @@
+#include "atpch.h"
+
 #include "ATLogger.h"
-#include <time.h>
-#include <string>
-#include <iostream>
-#include <fstream>
+//#include <time.h>
+//#include <string>
+//#include <iostream>
+//#include <fstream>
 
 //The one and ONLY!!!!
 Atlas::CATLogger* Atlas::CATLogger::m_pInstance = 0;
