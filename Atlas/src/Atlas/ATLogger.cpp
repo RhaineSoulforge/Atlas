@@ -1,6 +1,6 @@
 #include "atpch.h"
 
-#include "ATLogger.h"
+//#include "ATLogger.h"
 //#include <time.h>
 //#include <string>
 //#include <iostream>

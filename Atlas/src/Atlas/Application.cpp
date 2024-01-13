@@ -3,12 +3,13 @@
 #include "Application.h"
 
 #include "Events/ApplicationEvent.h"
-#include "ATLogger.h"
+//#include "ATLogger.h"
 
 namespace Atlas
 {
    CApplication::CApplication()
    {
+      m_Window = std::unique_ptr<CWindow>(CWindow::Create());
    }
 
    CApplication::~CApplication()
@@ -17,6 +18,9 @@ namespace Atlas
 
    void CApplication::Run()
    {
-      while (true);
+      while (m_bRunning)
+      {
+         m_Window->OnUpdate();
+      }
    }
 }

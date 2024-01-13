@@ -21,7 +21,9 @@
     <ClInclude Include="src\Atlas\Events\Event.h" />
     <ClInclude Include="src\Atlas\Events\KeyEvent.h" />
     <ClInclude Include="src\Atlas\Events\MouseEvent.h" />
+    <ClInclude Include="src\Atlas\Window.h" />
     <ClInclude Include="src\atpch.h" />
+    <ClInclude Include="src\Platform\Windows\MSWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Atlas\Application.cpp" />
@@ -30,6 +32,7 @@
     <ClCompile Include="src\atpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\MSWindow.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -86,7 +89,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>AT_PLATFORM_WINDOWS;AT_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>AT_PLATFORM_WINDOWS;AT_BUILD_DLL;AT_ENABLE_ASSERTS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>src\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
