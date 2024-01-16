@@ -20,6 +20,7 @@ namespace Atlas
       this->m_hConsole = 0;  //Sets Handler to null.
       this->m_cLoggerLevel = eLevel::ALL;  //Set default level to all messages.
       m_ucFlags = 0;  //Sets all flags to off.
+      FreeConsole();
    }
 
    //Deconstructor
@@ -59,12 +60,14 @@ namespace Atlas
    // Out:  Returns true if Logger was successfully intialized, false otherwise.
    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    bool CATLogger::Init(eLevel Loggerlevel, unsigned char ucFlags, const CString& sOutputFilename)
-   {
+   {     
       //If we're not a console app already then we need to create a console.
-      #ifdef AT_WINDOWS
-         bool bresult = AllocConsole();
-         if (!bresult)
-            return false;
+      #ifdef AT_PLATFORM_WINDOWS
+         #ifndef AT_RELEASE
+            bool bresult = AllocConsole();
+            if (!bresult)
+               return false;
+         #endif   
       #endif
 
       this->SetLevel(Loggerlevel);
@@ -87,7 +90,7 @@ namespace Atlas
          SetOutputFile(sOutputFilename.getCstr());
 
       //We're in the clear output message saying so and telling user what message level was set.
-      this->info("Atlas Logger Intialized at level {i}", this->m_cLoggerLevel);
+      AT_LOG_INFO("Atlas Logger Intialized at level {i}", this->m_cLoggerLevel);
 
       //Aloc log vector
       m_vpFileQueue = new std::vector<CString>();
@@ -109,8 +112,10 @@ namespace Atlas
    void CATLogger::Shutdown()
    {
       //If we're not a console app then we need to free up the Console we created.
-      #ifdef AT_WINDOWS
-         FreeConsole();
+      #ifdef AT_PLATFORM_WINDOWS
+         #ifndef AT_RELEASE   
+               FreeConsole();
+         #endif
       #endif
 
       //Are we outputting to a file and there are message to be outputted to that file?

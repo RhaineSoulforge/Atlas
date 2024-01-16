@@ -14,5 +14,7 @@ class CSandbox : public Atlas::CApplication
 
 Atlas::CApplication* Atlas::CreateApplication()
 {
+   Atlas::CATLogger::GetInstance()->Init(Atlas::CATLogger::eLevel::ALL,
+      Atlas::CATLogger::eFlags::CONSOLE | Atlas::CATLogger::eFlags::TIMESTAMP);
    return new CSandbox();
 }

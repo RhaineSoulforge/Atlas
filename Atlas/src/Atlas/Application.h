@@ -12,6 +12,7 @@ namespace Atlas
          virtual ~CApplication();
 
          void Run();
+         void OnEvent(CEvent& e);
       private:
          std::unique_ptr<CWindow> m_Window;
          bool m_bRunning = true;

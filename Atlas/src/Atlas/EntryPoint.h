@@ -6,7 +6,6 @@
 
    int main()
    {
-      Atlas::CATLogger::GetInstance()->Init(Atlas::CATLogger::eLevel::ALL, Atlas::CATLogger::eFlags::TIMESTAMP | Atlas::CATLogger::eFlags::CONSOLE);
       auto app = Atlas::CreateApplication();
       app->Run();
       delete app;

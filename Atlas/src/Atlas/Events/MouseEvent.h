@@ -15,7 +15,7 @@ namespace Atlas
          std::string ToString() const override
          {
             std::stringstream ss;
-            ss << "MouseMovedEvent: " << m_fX << ", " << m_fY << m_fY;
+            ss << "MouseMovedEvent: " << m_fX << ", " << m_fY;
             return ss.str();
          }
 
@@ -38,7 +38,7 @@ namespace Atlas
          std::string ToString() const override
          {
             std::stringstream ss;
-            ss << "MouseScrolledEvent: " << GetXOffset << ", " << GetYOffset();
+            ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
             return ss.str();
          }
 

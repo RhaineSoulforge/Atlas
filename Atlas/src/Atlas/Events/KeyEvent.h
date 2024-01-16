@@ -27,7 +27,7 @@ namespace Atlas
          std::string ToString() const override
          {
             std::stringstream ss;
-            ss << "KeyPressedEvent: " << m_nKeyCode <<" (" << m_nRepeatCount << "repeats)";
+            ss << "KeyPressedEvent: " << m_nKeyCode <<" (" << m_nRepeatCount << " repeats)";
             return ss.str();
          }
 

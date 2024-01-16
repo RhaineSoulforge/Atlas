@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Atlas/Events/ApplicationEvent.h"
+#include "Atlas/Events/KeyEvent.h"
+#include "Atlas/Events/MouseEvent.h"
 #include "Atlas/Window.h"
 
 namespace Atlas
@@ -23,6 +26,8 @@ namespace Atlas
          virtual void Init(const SWindowProps& props);
          virtual void Shutdown();
 
+         static LRESULT CALLBACK MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
       private:
 
          struct SWindowData
@@ -30,6 +35,8 @@ namespace Atlas
             std::string m_sTitle;
             unsigned int m_unWidth, m_unHeight;
             bool m_bVSync;
+            HINSTANCE m_hInstance;
+            HWND m_hwnd;
 
             EventCallbackFn m_EventCallback;
          };
