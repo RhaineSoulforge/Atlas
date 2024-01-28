@@ -3,6 +3,9 @@
 #include "Core.h"
 #include "Window.h"
 
+#include "Events/ApplicationEvent.h"
+
+
 namespace Atlas
 {
    class ATLAS_API CApplication
@@ -14,6 +17,8 @@ namespace Atlas
          void Run();
          void OnEvent(CEvent& e);
       private:
+         bool OnWindowClose(Atlas::CWindowCloseEvent &e);
+
          std::unique_ptr<CWindow> m_Window;
          bool m_bRunning = true;
    };

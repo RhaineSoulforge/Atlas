@@ -171,6 +171,47 @@ namespace Atlas
                pWindow->m_wdData.m_EventCallback(e);
             return 0;
          }
+         case WM_LBUTTONDOWN:
+         {
+            Atlas::CMouseButtonPressedEvent e(0);
+            if (pWindow->m_wdData.m_EventCallback)
+               pWindow->m_wdData.m_EventCallback(e);
+            break;
+         }
+         case WM_MBUTTONDOWN:
+         {
+            Atlas::CMouseButtonPressedEvent e(1);
+            if (pWindow->m_wdData.m_EventCallback)
+               pWindow->m_wdData.m_EventCallback(e);
+            break;
+         }
+         case WM_RBUTTONDOWN:
+         {
+            Atlas::CMouseButtonPressedEvent e(2);
+            if (pWindow->m_wdData.m_EventCallback)
+               pWindow->m_wdData.m_EventCallback(e);
+            break;
+         }
+         case WM_LBUTTONUP:
+         {
+            Atlas::CMouseButtonReleasedEvent e(0);
+            if (pWindow->m_wdData.m_EventCallback)
+               pWindow->m_wdData.m_EventCallback(e);
+            break;
+         }
+         case WM_MBUTTONUP:
+         {
+            Atlas::CMouseButtonReleasedEvent e(1);
+            if (pWindow->m_wdData.m_EventCallback)
+               pWindow->m_wdData.m_EventCallback(e);
+            break;
+         }case WM_RBUTTONUP:
+         {
+            Atlas::CMouseButtonReleasedEvent e(2);
+            if (pWindow->m_wdData.m_EventCallback)
+               pWindow->m_wdData.m_EventCallback(e);
+            break;
+         }
          default:
             break;
       }

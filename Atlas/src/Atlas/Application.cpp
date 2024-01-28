@@ -2,11 +2,9 @@
 
 #include "Application.h"
 
-#include "Events/ApplicationEvent.h"
-
 namespace Atlas
 {
-   #define BIND_EVENT_FN(x) std::bind(&x,this,std::placeholders::_1)
+   #define BIND_EVENT_FN(x) std::bind(&CApplication::x,this,std::placeholders::_1)
    
    CApplication::CApplication()
    {
@@ -21,7 +19,10 @@ namespace Atlas
 
    void CApplication::OnEvent(CEvent& e)
    {
-      AT_LOG_INFO(e.ToString().c_str());
+      Atlas::CEventDispatcher dispatcher(e);
+      dispatcher.Dispatch<CWindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+      AT_LOG_TRACE(e.ToString().c_str());
    }
 
    void CApplication::Run()
@@ -30,5 +31,11 @@ namespace Atlas
       {
          m_Window->OnUpdate();
       }
+   }
+
+   bool CApplication::OnWindowClose(Atlas::CWindowCloseEvent& e)
+   {
+      m_bRunning = false;
+      return true;
    }
 }
