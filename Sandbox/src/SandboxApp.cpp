@@ -1,10 +1,27 @@
 #include <Atlas.h>
 
+class CTestLayer : public Atlas::CLayer
+{
+   public:
+      CTestLayer() : CLayer("Test Layer") {}
+
+      void OnUpdate() override
+      {
+         //AT_LOG_TRACE("CTestLayer::OnUpdate");
+      }
+
+      void OnEvent(Atlas::CEvent &event) override
+      {
+         AT_LOG_TRACE("{s}", event.ToString().c_str());
+      }
+};
+
 class CSandbox : public Atlas::CApplication
 {
    public:
       CSandbox()
       {
+         //PushLayer(new CTestLayer());
       }
 
       ~CSandbox()

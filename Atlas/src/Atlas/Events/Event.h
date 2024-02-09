@@ -45,7 +45,7 @@ namespace Atlas
          {
             return CHECK_BIT(GetCategoryFlags(), category);
          }
-      protected:
+      //protected:
          bool m_bHandled = false;
    };
 
