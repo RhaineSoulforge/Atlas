@@ -18,6 +18,11 @@ namespace Atlas
       Shutdown();
    }
 
+   void* CMSWindow::GetNativeWindow() const
+   {
+      return (void*)this;
+   }
+
    void CMSWindow::Init(const SWindowProps& props)
    {
       m_wdData.m_sTitle = props.m_sTitle;
@@ -145,6 +150,7 @@ namespace Atlas
          }
          case WM_KEYDOWN:
          {
+            pWindow->setKeyState(wParam, false);
             Atlas::CKeyPressedEvent e(wParam,1);
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);
@@ -152,6 +158,7 @@ namespace Atlas
          }
          case WM_KEYUP:
          {
+            pWindow->setKeyState(wParam, true);
             Atlas::CKeyReleasedEvent e(wParam);
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);
@@ -159,6 +166,7 @@ namespace Atlas
          }
          case WM_MOUSEMOVE:
          {
+            pWindow->setMousePosition(std::pair<float, float>(LOWORD(lParam), HIWORD(lParam)));
             Atlas::CMouseMovedEvent e(LOWORD(lParam), HIWORD(lParam));
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);
@@ -166,6 +174,7 @@ namespace Atlas
          }
          case WM_MOUSEWHEEL:
          {
+            // TODO: Handle Mouse Wheel Scroll....
             Atlas::CMouseScrolledEvent e(0, GET_WHEEL_DELTA_WPARAM(wParam));
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);
@@ -173,6 +182,7 @@ namespace Atlas
          }
          case WM_LBUTTONDOWN:
          {
+            //pWindow->setMouseButtonState(button code, true);
             Atlas::CMouseButtonPressedEvent e(0);
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);
@@ -180,6 +190,7 @@ namespace Atlas
          }
          case WM_MBUTTONDOWN:
          {
+            //pWindow->setMouseButtonState(button code, true);
             Atlas::CMouseButtonPressedEvent e(1);
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);
@@ -187,6 +198,7 @@ namespace Atlas
          }
          case WM_RBUTTONDOWN:
          {
+            //pWindow->setMouseButtonState(button code, true);
             Atlas::CMouseButtonPressedEvent e(2);
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);
@@ -194,6 +206,7 @@ namespace Atlas
          }
          case WM_LBUTTONUP:
          {
+            //pWindow->setMouseButtonState(button code, false);
             Atlas::CMouseButtonReleasedEvent e(0);
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);
@@ -201,12 +214,14 @@ namespace Atlas
          }
          case WM_MBUTTONUP:
          {
+            //pWindow->setMouseButtonState(button code, false);
             Atlas::CMouseButtonReleasedEvent e(1);
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);
             break;
          }case WM_RBUTTONUP:
          {
+            //pWindow->setMouseButtonState(button code, false);
             Atlas::CMouseButtonReleasedEvent e(2);
             if (pWindow->m_wdData.m_EventCallback)
                pWindow->m_wdData.m_EventCallback(e);

@@ -37,6 +37,8 @@ namespace Atlas
          virtual void SetVSync(bool bEnabled) = 0;
          virtual bool IsVSync() const = 0;
 
+         virtual void* GetNativeWindow() const = 0;
+
          static CWindow* Create(const SWindowProps& props = SWindowProps());
    };
 }

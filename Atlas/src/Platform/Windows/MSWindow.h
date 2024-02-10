@@ -22,6 +22,20 @@ namespace Atlas
          void SetVSync(bool bEnabled);
          bool IsVSync() const;
 
+         virtual void* GetNativeWindow() const override;
+
+         inline void setKeyState(int nKeycode, bool bPressed) { m_bKeyboardBuffer[nKeycode] = bPressed; }
+         inline void setMouseButtonState(int nButton, bool bPressed) { m_bMouseBuffer[nButton] = bPressed; }
+         inline void setMousePosition(std::pair<float, float> prPosition) { m_fMouseX = prPosition.first; m_fMouseY = prPosition.second; }
+         inline void setMouseX(float x) { m_fMouseX = x; }
+         inline void setMouseY(float y) { m_fMouseY = y; }
+
+         inline bool getKeyState(int nKeycode) { return m_bKeyboardBuffer[nKeycode]; }
+         inline bool getMouseButtonState(int nButton) { return m_bMouseBuffer[nButton]; }
+         inline std::pair<float, float> getMousePosition(void) { return std::pair<float, float>(m_fMouseX, m_fMouseY); }
+         inline float getMouseX(void) { return m_fMouseX; }
+         inline float getMouseY(void) { return m_fMouseY; }
+
       private:
          virtual void Init(const SWindowProps& props);
          virtual void Shutdown();
@@ -42,5 +56,8 @@ namespace Atlas
          };
 
          SWindowData m_wdData;
+         bool m_bMouseBuffer[MOUSEBUFFERSIZE];
+         bool m_bKeyboardBuffer[KEYBOARDBUFFERSIZE];
+         float m_fMouseX, m_fMouseY;
    };
 }

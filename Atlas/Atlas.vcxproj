@@ -21,11 +21,13 @@
     <ClInclude Include="src\Atlas\Events\Event.h" />
     <ClInclude Include="src\Atlas\Events\KeyEvent.h" />
     <ClInclude Include="src\Atlas\Events\MouseEvent.h" />
+    <ClInclude Include="src\Atlas\Input.h" />
     <ClInclude Include="src\Atlas\Layer.h" />
     <ClInclude Include="src\Atlas\LayerStack.h" />
     <ClInclude Include="src\Atlas\Window.h" />
     <ClInclude Include="src\atpch.h" />
     <ClInclude Include="src\Platform\Windows\MSWindow.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Atlas\Application.cpp" />
@@ -37,6 +39,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\MSWindow.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

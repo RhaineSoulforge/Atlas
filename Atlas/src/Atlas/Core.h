@@ -22,3 +22,6 @@
 #define TOGGLE_BIT(x) (x ^= y)
 #define CHECK_BIT(x,y) (((x & y) == y) ? true : false)
 #define BIT(x) (1 << x)
+
+#define MOUSEBUFFERSIZE 4
+#define KEYBOARDBUFFERSIZE 256

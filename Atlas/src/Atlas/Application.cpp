@@ -1,13 +1,18 @@
 #include "atpch.h"
 
 #include "Application.h"
+#include "Input.h"
 
 namespace Atlas
 {
    #define BIND_EVENT_FN(x) std::bind(&CApplication::x,this,std::placeholders::_1)
-   
+ 
+   CApplication* CApplication::m_pInstance = nullptr;
+
    CApplication::CApplication()
    {
+      AT_ASSERT(!m_pInstance, "Application already exists!!!");
+      m_pInstance = this;
       m_Window = std::unique_ptr<CWindow>(CWindow::Create());
       m_Window->SetEventCallback(BIND_EVENT_FN(CApplication::OnEvent));
    }
@@ -48,6 +53,9 @@ namespace Atlas
       {
          for (CLayer* layer : m_LayerStack)
             layer->OnUpdate();
+
+         //std::pair<float, float> position = CInput::GetMousePosition();
+         //AT_LOG_TRACE("CApplication::Run() := {f}, {f}", position.first, position.second);
 
          m_Window->OnUpdate();
       }
