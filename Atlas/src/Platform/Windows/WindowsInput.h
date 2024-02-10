@@ -13,6 +13,5 @@ namespace Atlas
       virtual std::pair<float, float> GetMousePositionImpl(void) override;
       virtual float GetMouseXImpl(void) override;
       virtual float GetMouseYImpl(void) override;
-
    };
 }

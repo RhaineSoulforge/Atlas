@@ -22,8 +22,10 @@
     <ClInclude Include="src\Atlas\Events\KeyEvent.h" />
     <ClInclude Include="src\Atlas\Events\MouseEvent.h" />
     <ClInclude Include="src\Atlas\Input.h" />
+    <ClInclude Include="src\Atlas\KeyCodes.h" />
     <ClInclude Include="src\Atlas\Layer.h" />
     <ClInclude Include="src\Atlas\LayerStack.h" />
+    <ClInclude Include="src\Atlas\MouseButtonCodes.h" />
     <ClInclude Include="src\Atlas\Window.h" />
     <ClInclude Include="src\atpch.h" />
     <ClInclude Include="src\Platform\Windows\MSWindow.h" />

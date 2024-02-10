@@ -37,7 +37,7 @@ namespace Atlas
       Atlas::CEventDispatcher dispatcher(e);
       dispatcher.Dispatch<CWindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-      AT_LOG_TRACE(e.ToString().c_str());
+      //AT_LOG_TRACE(e.ToString().c_str());
 
       for (auto iter = m_LayerStack.end(); iter != m_LayerStack.begin();)
       {
