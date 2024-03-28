@@ -54,7 +54,9 @@ namespace Atlas
       while (m_bRunning)
       {
          glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
-         glClear(GL_COLOR_BUFFER_BIT);
+         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+         glFlush();
 
          for (CLayer* layer : m_LayerStack)
             layer->OnUpdate();

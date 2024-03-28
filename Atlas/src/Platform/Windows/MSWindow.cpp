@@ -113,6 +113,11 @@ namespace Atlas
 
       int status = gladLoadGL();
       AT_ASSERT(status, "Failed to initialize Glad!!!");
+
+      AT_LOG_INFO("openGL:");
+      AT_LOG_INFO("  Vendor: {s}", glGetString(GL_VENDOR));
+      AT_LOG_INFO("  Renderer: {s}", glGetString(GL_RENDERER));
+      AT_LOG_INFO("  Version: {s}", glGetString(GL_VERSION));
    }
 
    void CMSWindow::Shutdown(void)
@@ -131,6 +136,8 @@ namespace Atlas
          TranslateMessage(&message);
          DispatchMessageW(&message);
       }
+
+      SwapBuffers(GetDC(m_wdData.m_hwnd));
    }
 
    void CMSWindow::SetVSync(bool bEnabled)
