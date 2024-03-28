@@ -3,6 +3,8 @@
 #include "Atlas/KeyCodes.h"
 #include "Atlas/MouseButtonCodes.h"
 
+#include <glad/glad.h>
+
 namespace Atlas
 {
    CWindow* CWindow::Create(const SWindowProps& props)
@@ -79,6 +81,38 @@ namespace Atlas
       SetVSync(false);
       memset(m_bMouseBuffer, false, MOUSEBUFFERSIZE);
       memset(m_bKeyboardBuffer, false, KEYBOARDBUFFERSIZE);
+
+      //Opengl setup!
+      PIXELFORMATDESCRIPTOR pfd =
+      {
+         sizeof(PIXELFORMATDESCRIPTOR),  //Size 
+         1,  //Version
+         PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER, //Flags
+         PFD_TYPE_RGBA, //Pixeltype
+         32, // ColorBits
+         0, 0, 0, 0, 0, 0,
+         0,
+         0,
+         0,
+         0, 0, 0, 0,
+         24,  //DepthBits
+         8,  //stencilDepth
+         0,
+         PFD_MAIN_PLANE,  //LayerType
+         0,
+         0, 0, 0
+      };
+
+      HDC hdc = GetDC(m_wdData.m_hwnd);
+
+      int nPixelFormat = ChoosePixelFormat(hdc, &pfd);
+      SetPixelFormat(hdc, nPixelFormat, &pfd);
+
+      HGLRC oglRC = wglCreateContext(hdc);
+      wglMakeCurrent(hdc, oglRC);
+
+      int status = gladLoadGL();
+      AT_ASSERT(status, "Failed to initialize Glad!!!");
    }
 
    void CMSWindow::Shutdown(void)
@@ -125,12 +159,12 @@ namespace Atlas
             SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pWindow);
             return 0;
          }
-         case WM_PAINT:
-         {
-            hDeviceContext = BeginPaint(hWnd, &ps);
-            EndPaint(hWnd, &ps);
-            return 0;
-         }
+         //case WM_PAINT:
+         //{
+         //   hDeviceContext = BeginPaint(hWnd, &ps);
+         //   EndPaint(hWnd, &ps);
+         //   return 0;
+         //}
          case WM_SIZE:
          {
             Atlas::CWindowResizeEvent e(LOWORD(lParam), HIWORD(lParam));

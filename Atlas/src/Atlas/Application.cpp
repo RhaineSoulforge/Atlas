@@ -3,6 +3,8 @@
 #include "Application.h"
 #include "Input.h"
 
+#include <glad/glad.h>
+
 namespace Atlas
 {
    #define BIND_EVENT_FN(x) std::bind(&CApplication::x,this,std::placeholders::_1)
@@ -51,6 +53,9 @@ namespace Atlas
    {
       while (m_bRunning)
       {
+         glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
+         glClear(GL_COLOR_BUFFER_BIT);
+
          for (CLayer* layer : m_LayerStack)
             layer->OnUpdate();
 
