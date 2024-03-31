@@ -28,6 +28,7 @@
     <ClInclude Include="src\Atlas\MouseButtonCodes.h" />
     <ClInclude Include="src\Atlas\Window.h" />
     <ClInclude Include="src\atpch.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\MSWindow.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
@@ -37,9 +38,11 @@
     <ClCompile Include="src\Atlas\CString.cpp" />
     <ClCompile Include="src\Atlas\Layer.cpp" />
     <ClCompile Include="src\Atlas\LayerStack.cpp" />
+    <ClCompile Include="src\Atlas\Renderer\GraphicsContext.h" />
     <ClCompile Include="src\atpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\MSWindow.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>

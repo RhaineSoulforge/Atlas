@@ -33,6 +33,10 @@ namespace Atlas
          CLayerStack              m_LayerStack;
 
          static CApplication*     m_pInstance;
+
+         unsigned int m_unVertexArray;
+         unsigned int m_unVertexBuffer;
+         unsigned int m_unIndexBuffer;
    };
 
    // To be defined in CLIENT.

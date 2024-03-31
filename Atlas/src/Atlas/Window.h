@@ -13,7 +13,7 @@ namespace Atlas
       unsigned int m_unWidth;
       unsigned int m_unHeight;
 
-      SWindowProps(const std::string& sTitle = "Atlas Engine v.Alpha",
+      SWindowProps(const std::string& sTitle = "Atlas Game Engine v.Alpha",
          unsigned int unWidth = 1280,
          unsigned int unHeight = 720)
          : m_sTitle(sTitle), m_unWidth(unWidth), m_unHeight(unHeight)

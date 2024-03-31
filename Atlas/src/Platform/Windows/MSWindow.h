@@ -4,6 +4,7 @@
 #include "Atlas/Events/KeyEvent.h"
 #include "Atlas/Events/MouseEvent.h"
 #include "Atlas/Window.h"
+#include "Atlas/Renderer/GraphicsContext.h"
 
 namespace Atlas
 {
@@ -59,5 +60,6 @@ namespace Atlas
          bool m_bMouseBuffer[MOUSEBUFFERSIZE];
          bool m_bKeyboardBuffer[KEYBOARDBUFFERSIZE];
          float m_fMouseX, m_fMouseY;
+         CGraphicsContext *m_pContext;
    };
 }

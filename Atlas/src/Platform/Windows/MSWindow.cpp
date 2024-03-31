@@ -2,6 +2,7 @@
 #include "MSWindow.h"
 #include "Atlas/KeyCodes.h"
 #include "Atlas/MouseButtonCodes.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 #include <glad/glad.h>
 
@@ -82,48 +83,15 @@ namespace Atlas
       memset(m_bMouseBuffer, false, MOUSEBUFFERSIZE);
       memset(m_bKeyboardBuffer, false, KEYBOARDBUFFERSIZE);
 
-      //Opengl setup!
-      PIXELFORMATDESCRIPTOR pfd =
-      {
-         sizeof(PIXELFORMATDESCRIPTOR),  //Size 
-         1,  //Version
-         PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER, //Flags
-         PFD_TYPE_RGBA, //Pixeltype
-         32, // ColorBits
-         0, 0, 0, 0, 0, 0,
-         0,
-         0,
-         0,
-         0, 0, 0, 0,
-         24,  //DepthBits
-         8,  //stencilDepth
-         0,
-         PFD_MAIN_PLANE,  //LayerType
-         0,
-         0, 0, 0
-      };
-
-      HDC hdc = GetDC(m_wdData.m_hwnd);
-
-      int nPixelFormat = ChoosePixelFormat(hdc, &pfd);
-      SetPixelFormat(hdc, nPixelFormat, &pfd);
-
-      HGLRC oglRC = wglCreateContext(hdc);
-      wglMakeCurrent(hdc, oglRC);
-
-      int status = gladLoadGL();
-      AT_ASSERT(status, "Failed to initialize Glad!!!");
-
-      AT_LOG_INFO("openGL:");
-      AT_LOG_INFO("  Vendor: {s}", glGetString(GL_VENDOR));
-      AT_LOG_INFO("  Renderer: {s}", glGetString(GL_RENDERER));
-      AT_LOG_INFO("  Version: {s}", glGetString(GL_VERSION));
+      m_pContext = new Atlas::COpenGLContext(m_wdData.m_hwnd);
+      m_pContext->Init();
    }
 
    void CMSWindow::Shutdown(void)
    {
       std::wstring wsTitle = std::wstring(m_wdData.m_sTitle.begin(), m_wdData.m_sTitle.end());
       UnregisterClassW(wsTitle.c_str(), m_wdData.m_hInstance);
+      delete m_pContext;
    }
 
    void CMSWindow::OnUpdate(void)
@@ -137,7 +105,7 @@ namespace Atlas
          DispatchMessageW(&message);
       }
 
-      SwapBuffers(GetDC(m_wdData.m_hwnd));
+      m_pContext->SwapBuffer();
    }
 
    void CMSWindow::SetVSync(bool bEnabled)

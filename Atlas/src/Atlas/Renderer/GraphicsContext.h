@@ -1,0 +1,36 @@
+#pragma once
+
+#include "atpch.h"
+
+namespace Atlas
+{
+    class CGraphicsContext
+    {
+        public:
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Function: Init
+            // Last Modified:  March 30th, 2024  
+            // Author:  Jason A Biddle
+            //
+            // Purpose:  Initializes the GraphicsContext.
+            //
+            // In:  hWnd - The handle to the parent window that we'll be setting the DeviceContext to.
+            //
+            // Out:  ---
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            virtual void Init(void) = 0;
+            
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Function: 
+            // Last Modified:  
+            // Author:  
+            //
+            // Purpose:  
+            //
+            // In:  
+            //
+            // Out:
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            virtual void SwapBuffer(void) = 0;
+    };
+}
