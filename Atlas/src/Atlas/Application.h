@@ -7,6 +7,8 @@
 #include "Events/ApplicationEvent.h"
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
+#include "Atlas/Renderer/Shader.h"
+#include "Atlas/Renderer/Buffer.h"
 
 
 namespace Atlas
@@ -37,6 +39,8 @@ namespace Atlas
          unsigned int m_unVertexArray;
          unsigned int m_unVertexBuffer;
          unsigned int m_unIndexBuffer;
+         std::unique_ptr<CShader> m_pShader;
+         std::unique_ptr<CVertexBuffer> m_pVertexBuffer;
    };
 
    // To be defined in CLIENT.

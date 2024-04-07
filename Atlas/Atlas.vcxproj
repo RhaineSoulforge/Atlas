@@ -26,9 +26,14 @@
     <ClInclude Include="src\Atlas\Layer.h" />
     <ClInclude Include="src\Atlas\LayerStack.h" />
     <ClInclude Include="src\Atlas\MouseButtonCodes.h" />
+    <ClInclude Include="src\Atlas\Renderer\Buffer.h" />
+    <ClInclude Include="src\Atlas\Renderer\Renderer.h" />
+    <ClInclude Include="src\Atlas\Renderer\Shader.h" />
     <ClInclude Include="src\Atlas\Window.h" />
     <ClInclude Include="src\atpch.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexBuffer.h" />
     <ClInclude Include="src\Platform\Windows\MSWindow.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
@@ -38,11 +43,16 @@
     <ClCompile Include="src\Atlas\CString.cpp" />
     <ClCompile Include="src\Atlas\Layer.cpp" />
     <ClCompile Include="src\Atlas\LayerStack.cpp" />
+    <ClCompile Include="src\Atlas\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Atlas\Renderer\GraphicsContext.h" />
+    <ClCompile Include="src\Atlas\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Atlas\Renderer\Shader.cpp" />
     <ClCompile Include="src\atpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexBuffer.cpp" />
     <ClCompile Include="src\Platform\Windows\MSWindow.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
