@@ -37,10 +37,9 @@ namespace Atlas
          static CApplication*     m_pInstance;
 
          unsigned int m_unVertexArray;
-         unsigned int m_unVertexBuffer;
-         unsigned int m_unIndexBuffer;
          std::unique_ptr<CShader> m_pShader;
          std::unique_ptr<CVertexBuffer> m_pVertexBuffer;
+         std::unique_ptr<CIndexBuffer> m_pIndexBuffer;
    };
 
    // To be defined in CLIENT.

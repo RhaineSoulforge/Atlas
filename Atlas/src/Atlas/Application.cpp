@@ -21,9 +21,6 @@ namespace Atlas
       glGenVertexArrays(1, &m_unVertexArray);
       glBindVertexArray(m_unVertexArray);
 
-      //glGenBuffers(1, &m_unVertexBuffer);
-      //glBindBuffer(GL_ARRAY_BUFFER,m_unVertexBuffer);
-
       float vertices[9] = {
          -0.5f, -0.5f, 0.0f,
          0.5f, -0.5f, 0.0f,
@@ -31,16 +28,12 @@ namespace Atlas
       };
 
       m_pVertexBuffer.reset(CVertexBuffer::Create(vertices,sizeof(vertices)));
-      //glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
       glEnableVertexAttribArray(0);
       glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 
-      glGenBuffers(1, &m_unIndexBuffer);
-      glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_unIndexBuffer);
-
       unsigned int indices[3] = { 0, 1, 2 };
-      glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+      m_pIndexBuffer.reset(CIndexBuffer::Create(indices,3));
 
       std::string vertexSrc = R"(
         
@@ -110,7 +103,7 @@ namespace Atlas
          m_pShader->Bind();
          //glBindVertexArray(m_unVertexArray);
          m_pVertexBuffer->Bind();
-         glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+         glDrawElements(GL_TRIANGLES, m_pIndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
          m_pShader->Unbind();
 
          for (CLayer* layer : m_LayerStack)

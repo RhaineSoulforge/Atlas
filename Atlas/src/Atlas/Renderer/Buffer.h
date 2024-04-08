@@ -21,6 +21,8 @@ namespace Atlas
             virtual void Bind(void) const = 0;
             virtual void Unbind(void) const = 0;
 
+            virtual uint32_t GetCount(void) const = 0;
+
             static CIndexBuffer *Create(uint32_t *indicies, uint32_t count);
     };
 }
