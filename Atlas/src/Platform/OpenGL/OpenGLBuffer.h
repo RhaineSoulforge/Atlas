@@ -11,8 +11,12 @@ namespace Atlas
 
             virtual void Bind(void) const;
             virtual void Unbind(void) const;
+
+            virtual const CBufferLayout &GetLayout(void) const override { return m_blLayout; }
+            virtual void SetLayout(const CBufferLayout &layout) override { m_blLayout = layout; }
         private:
             uint32_t m_unRendererID;
+            CBufferLayout m_blLayout;
     };
 
     class COpenGLIndexBuffer : public CIndexBuffer

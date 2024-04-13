@@ -9,6 +9,7 @@
 #include "Events/MouseEvent.h"
 #include "Atlas/Renderer/Shader.h"
 #include "Atlas/Renderer/Buffer.h"
+#include "Atlas/Renderer/VertexArray.h"
 
 
 namespace Atlas
@@ -36,10 +37,10 @@ namespace Atlas
 
          static CApplication*     m_pInstance;
 
-         unsigned int m_unVertexArray;
-         std::unique_ptr<CShader> m_pShader;
-         std::unique_ptr<CVertexBuffer> m_pVertexBuffer;
-         std::unique_ptr<CIndexBuffer> m_pIndexBuffer;
+         std::shared_ptr<CShader> m_pShader;
+         std::shared_ptr<CVertexBuffer> m_pVertexBuffer;
+         std::shared_ptr<CIndexBuffer> m_pIndexBuffer;
+         std::shared_ptr<CVertexArray> m_pVertexArray;
    };
 
    // To be defined in CLIENT.
