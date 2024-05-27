@@ -19,3 +19,5 @@ x64/
 *.mdb
 *.opendb
 *.VC.db
+Atlas/src/Atlas/Utils/Maths/main.cpp
+Atlas/src/Atlas/Utils/Maths/result.exe
