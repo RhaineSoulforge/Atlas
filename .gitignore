@@ -21,3 +21,4 @@ x64/
 *.VC.db
 Atlas/src/Atlas/Utils/Maths/main.cpp
 Atlas/src/Atlas/Utils/Maths/result.exe
+Atlas/src/Atlas/Utils/Maths/mat.cpp
