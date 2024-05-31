@@ -76,6 +76,49 @@ namespace Math
 
         void Inverse(void)
         {
+            float lhs[9];
+            to_array(lhs);
+            float det = 1.0f / Det();
+            std::cout << "Det(f) := " << Det() << std::endl;
+
+            //Matrix of Minors
+            float minors[9];
+            minors[0] = (lhs[4] * lhs[8]) - (lhs[5] * lhs[7]);
+            minors[1] = (lhs[3] * lhs[8]) - (lhs[5] * lhs[6]);
+            minors[2] = (lhs[3] * lhs[7]) - (lhs[4] * lhs[6]);
+
+            minors[3] = (lhs[1] * lhs[8]) - (lhs[2] * lhs[7]);
+            minors[4] = (lhs[0] * lhs[8]) - (lhs[2] * lhs[6]);
+            minors[5] = (lhs[0] * lhs[7]) - (lhs[1] * lhs[6]);
+
+            minors[6] = (lhs[1] * lhs[5]) - (lhs[2] * lhs[4]);
+            minors[7] = (lhs[0] * lhs[5]) - (lhs[2] * lhs[3]);
+            minors[8] = (lhs[0] * lhs[4]) - (lhs[1] * lhs[3]);
+
+            std::cout << std::fixed << std::setprecision(20);
+            for(int row=0;row<3;row++)
+            {
+                std::cout << "|";
+                for(int col=0;col<3;col++)
+                {
+                    if(col == 2)
+                        std::cout << minors[col + (row*3)] << "|";
+                    else
+                        std::cout << minors[col + (row*3)] << " ";
+                }
+                std::cout << std::endl;
+            }
+            m_right.m_arfDirection[0] = minors[0] * det;
+            m_right.m_arfDirection[1] = minors[1] * det * -1.0f;
+            m_right.m_arfDirection[2] = minors[2] * det;
+
+            m_up.m_arfDirection[0] = minors[3] * det * -1.0f;
+            m_up.m_arfDirection[1] = minors[4] * det;
+            m_up.m_arfDirection[2] = minors[5] * det * -1.0f;
+
+            m_position.m_arfDirection[0] = minors[6] * det;
+            m_position.m_arfDirection[1] = minors[7] * det * -1.0f;
+            m_position.m_arfDirection[2] = minors[8] * det;
         }
 
         void RotateX(float fAngle)
