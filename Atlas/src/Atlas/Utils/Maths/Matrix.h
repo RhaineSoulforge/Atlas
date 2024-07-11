@@ -68,7 +68,7 @@ namespace Math
             float result;
 
             result = m_right.m_arfDirection[0] * ((m_up.m_arfDirection[1]*m_position.m_arfDirection[2]) - (m_position.m_arfDirection[1]*m_up.m_arfDirection[2])) -
-                     m_up.m_arfDirection[0] * ((m_right.m_arfDirection[1]*m_position.m_arfDirection[2]) - (m_position.m_arfDirection[1]*m_right.m_arfDirection[2])) -
+                     m_up.m_arfDirection[0] * ((m_right.m_arfDirection[1]*m_position.m_arfDirection[2]) - (m_position.m_arfDirection[1]*m_right.m_arfDirection[2])) +
                      m_position.m_arfDirection[0] * ((m_right.m_arfDirection[1]*m_up.m_arfDirection[2]) - (m_right.m_arfDirection[2]*m_up.m_arfDirection[1]));
 
             return result;
