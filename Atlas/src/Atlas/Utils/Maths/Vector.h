@@ -7,7 +7,12 @@
 
 namespace Math
 {
-    inline float RadianToDegrees(float angle)
+    #define _X m_arfDirection[0]
+    #define _Y m_arfDirection[1]
+    #define _Z m_arfDirection[2]
+    #define _W m_arfDirection[3]
+
+    inline float DegreestoRadians(float angle)
     {
         return angle * (180/M_PI);
     }
@@ -21,7 +26,7 @@ namespace Math
             m_arfDirection[0] = 0.0f;
             m_arfDirection[1] = 0.0f;
             m_arfDirection[2] = 0.0f;
-            m_arfDirection[3] = 1.0f;
+            m_arfDirection[3] = 0.0f;
         }
 
         Vector4f(const Vector4f &value)
@@ -32,7 +37,7 @@ namespace Math
             m_arfDirection[3] = value.m_arfDirection[3];
         }
 
-        Vector4f(float x, float y, float z, float w = 1.0f)
+        Vector4f(float x, float y, float z, float w = 0.0f)
         {
             m_arfDirection[0] = x;
             m_arfDirection[1] = y;
