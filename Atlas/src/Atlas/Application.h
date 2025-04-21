@@ -12,4 +12,7 @@ namespace Atlas
 
             void Run();
     };
+
+    // To be defined by CLIENT application!
+    CApplication *CreateApplication(void);
 }

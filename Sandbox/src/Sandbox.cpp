@@ -14,10 +14,7 @@ class CSandbox : public Atlas::CApplication
         }
 };
 
-int main(int argc, char **argv)
+Atlas::CApplication *Atlas::CreateApplication(void)
 {
-    CSandbox *app = new CSandbox();
-    app->Run();
-    delete app;
-    return 0;
+    return new CSandbox();
 }

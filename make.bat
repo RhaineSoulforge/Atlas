@@ -12,3 +12,5 @@ SET files= ../Atlas/src/Atlas/*.cpp ../Sandbox/src/*.cpp
 cl /EHsc /std:c++17 %includes% %defines% %files% %links% /FeSandbox.exe
 
 popd
+
+PAUSE
