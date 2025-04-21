@@ -1,5 +1,7 @@
 # Directories
 .vs/
+.vscode/
+build/
 bin/
 bin-int/
 x64/
