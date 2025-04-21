@@ -3,6 +3,7 @@
 bin/
 bin-int/
 x64/
+backup2024/
 
 # Files
 *.csproj
