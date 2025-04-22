@@ -1,4 +1,6 @@
+#include "atpch.h"
 #include "Application.h"
+#include "ATLogger.h"
 
 namespace Atlas
 {
@@ -14,6 +16,7 @@ namespace Atlas
 
     void CApplication::Run()
     {
+        AT_LOG_INFO("Atlas GE version Alpha online....")
         while(true);
     }
 }

@@ -12,11 +12,6 @@
 #include "CString.h"
 #include "Core.h"
 
-#define SET_BIT(x,y) (x |= y)
-#define CLEAR_BITS(x) (x = 0)
-#define CLEAR_BIT(x,y) (x &= ~y)
-#define TOGGLE_BIT(x) (x ^= y)
-#define CHECK_BIT(x,y) (((x & y) == y) ? true : false)
 
 namespace Atlas
 {
