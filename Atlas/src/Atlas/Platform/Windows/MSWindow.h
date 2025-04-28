@@ -14,7 +14,7 @@ namespace Atlas
         public:
             static CMSWindow *GetInstance(void);
             static void DeleteInstance(void);
-            
+
             void OnUpdate(void) override;
 
             inline uint32_t GetWidth(void) const override { return m_Data.m_unWidth; }
@@ -22,14 +22,18 @@ namespace Atlas
 
             // Window attributes
             inline void SetEventCallback(const EventCallbackFn &callback) override { m_Data.m_EventCallback = callback; }
-            void SetVSync(bool enabled) override;
-            bool IsVSync(void) const override;
+            inline void SetVSync(bool enabled) override { m_Data.m_bVSync = enabled; }
+            inline bool IsVSync(void) const override { return m_Data.m_bVSync; }
+            inline HWND GetHandle(void) const { return m_Data.m_hWnd; }
+            inline HINSTANCE GetHInstance(void) const { return m_Data.m_hInstance; }
 
             virtual void Init(const SWindowProps &props);
             virtual void Shutdown(void);
 
         private:
             static CMSWindow *m_pInstance;
+
+            static LRESULT CALLBACK MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
             struct SWindowData
             {
