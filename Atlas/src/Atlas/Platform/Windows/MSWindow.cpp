@@ -1,11 +1,19 @@
 #include "MSWindow.h"
-#include "Atlas/ATLogger.h"
+#include "Atlas/KeyCodes.h"
+#include "Atlas/MouseButtonCodes.h"
 
 // There can be only One!!
 Atlas::CMSWindow *Atlas::CMSWindow::m_pInstance = 0;
 
 namespace Atlas
 {
+    CWindow *CWindow::Create(const SWindowProps &props)
+    {
+        CMSWindow *pWindow = CMSWindow::GetInstance();
+        pWindow->Init(props);
+        return pWindow;
+    }
+
     CMSWindow::CMSWindow(void)
     {
 
@@ -50,11 +58,12 @@ namespace Atlas
         wc.lpszMenuName = 0;
         wc.lpszClassName = m_Data.m_sTitle.c_str();
 
-        if(RegisterClassA(&wc) == 0)
-        {
-            AT_LOG_ERROR("Unable to Register Window class!!!")
-            return;
-        }
+        AT_ASSERT(RegisterClassA(&wc) == 0,"Unable to Register Window Class!!!");
+        // if(RegisterClassA(&wc) == 0)
+        // {
+        //     AT_LOG_ERROR("Unable to Register Window class!!!")
+        //     return;
+        // }
 
         m_Data.m_hWnd = CreateWindowExA(0,
             m_Data.m_sTitle.c_str(),
@@ -69,13 +78,19 @@ namespace Atlas
             m_Data.m_hInstance,
             this);
 
-        if(m_Data.m_hWnd == 0)
-        {
-            AT_LOG_ERROR("Failed to create Window!!!")
-            return;
-        }
+        AT_ASSERT(m_Data.m_hWnd == 0,"Failed to create Window!!!");
+        // if(m_Data.m_hWnd == 0)
+        // {
+        //     AT_LOG_ERROR("Failed to create Window!!!")
+        //     return;
+        // }
 
         AT_LOG_INFO("Created window Titled {s}:  {u}x{u}, VSync({b})",m_Data.m_sTitle,m_Data.m_unWidth,m_Data.m_unHeight,m_Data.m_bVSync)
+    }
+
+    void CMSWindow::Shutdown(void)
+    {
+        CMSWindow::DeleteInstance();
     }
 
     void CMSWindow::OnUpdate(void)
@@ -159,6 +174,42 @@ namespace Atlas
                     pWindow->m_Data.m_EventCallback(e);
                 return 0;
             }
+            case WM_LBUTTONDOWN:
+            {
+                Atlas::CMouseButtonPressedEvent e(AT_LBUTTON);
+                if(pWindow->m_Data.m_EventCallback)
+                    pWindow->m_Data.m_EventCallback(e);
+            } return 0;
+            case WM_MBUTTONDOWN:
+            {
+                Atlas::CMouseButtonPressedEvent e(AT_MBUTTON);
+                if(pWindow->m_Data.m_EventCallback)
+                    pWindow->m_Data.m_EventCallback(e);
+            } return 0;
+            case WM_RBUTTONDOWN:
+            {
+                Atlas::CMouseButtonPressedEvent e(AT_RBUTTON);
+                if(pWindow->m_Data.m_EventCallback)
+                    pWindow->m_Data.m_EventCallback(e);
+            } return 0;
+            case WM_LBUTTONUP:
+            {
+                Atlas::CMouseButtonReleasedEvent e(AT_LBUTTON);
+                if(pWindow->m_Data.m_EventCallback)
+                    pWindow->m_Data.m_EventCallback(e);
+            } return 0;
+            case WM_MBUTTONUP:
+            {
+                Atlas::CMouseButtonReleasedEvent e(AT_MBUTTON);
+                if(pWindow->m_Data.m_EventCallback)
+                    pWindow->m_Data.m_EventCallback(e);                
+            } return 0;
+            case WM_RBUTTONUP:
+            {
+                Atlas::CMouseButtonReleasedEvent e(AT_RBUTTON);
+                if(pWindow->m_Data.m_EventCallback)
+                    pWindow->m_Data.m_EventCallback(e);                
+            } return 0;
             default:
                 break;
         };

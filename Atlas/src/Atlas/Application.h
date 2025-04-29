@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core.h"
+#include "Window.h"
 
 namespace Atlas
 {
@@ -11,6 +12,9 @@ namespace Atlas
             virtual ~CApplication();
 
             void Run();
+        private:
+            CWindow *m_pWindow;
+            bool m_bRunning = true;
     };
 
     // To be defined by CLIENT application!

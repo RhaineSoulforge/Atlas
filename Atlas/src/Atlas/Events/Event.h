@@ -24,11 +24,11 @@ namespace Atlas
         EventCategoryMouseButton = 32
     };
 
-    #define EVENT_CLASS_TYPE(type) static eEventType GetStaticType(void) { return eEventType::##type; }\
+    #define EVENT_CLASS_TYPE(type) static eEventType GetStaticType(void) { return eEventType::type; }\
                                     virtual eEventType GetEventType(void) const override { return GetStaticType(); }\
                                     virtual const char *GetName(void) const override { return #type; }
 
-    #define EVENT_CLASS_CATEGORY(category) virtural int GetCategoryFlags(void) const override { return category; }
+    #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags(void) const override { return category; }
 
     class CEvent
     {

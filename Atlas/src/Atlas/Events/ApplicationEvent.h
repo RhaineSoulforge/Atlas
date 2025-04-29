@@ -22,8 +22,8 @@ namespace Atlas
                 return ss.str();
             }
 
-            EVENT_CLASS_TYPE(eEventType::WindowResize)
-            EVENT_CLASS_CATEGORY(eEventCategory::EventCategoryApplication)
+            EVENT_CLASS_TYPE(WindowResize)
+            EVENT_CLASS_CATEGORY(EventCategoryApplication)
         private:
             unsigned int m_unWidth, m_unHeight;
     };
@@ -33,8 +33,8 @@ namespace Atlas
         public:
             CWindowCloseEvent() = default;
 
-            EVENT_CLASS_TYPE(eEventType::WindowClose);
-            EVENT_CLASS_CATEGORY(eEventCategory::EventCategoryApplication)
+            EVENT_CLASS_TYPE(WindowClose)
+            EVENT_CLASS_CATEGORY(EventCategoryApplication)
     };
 
     class CAppTickEvent : public CEvent
@@ -42,8 +42,8 @@ namespace Atlas
         public:
             CAppTickEvent() = default;
 
-            EVENT_CLASS_TYPE(eEventType::AppTick);
-            EVENT_CLASS_CATEGORY(eEventCategory::EventCategoryApplication)
+            EVENT_CLASS_TYPE(AppTick)
+            EVENT_CLASS_CATEGORY(EventCategoryApplication)
     };
 
     class CAppUpdateEvent : public CEvent
@@ -51,8 +51,8 @@ namespace Atlas
         public:
             CAppUpdateEvent() = default;
 
-            EVENT_CLASS_TYPE(eEventType::AppUpdate)
-            EVENT_CLASS_CATEGORY(eEventCategory::EventCategoryApplication)
+            EVENT_CLASS_TYPE(AppUpdate)
+            EVENT_CLASS_CATEGORY(EventCategoryApplication)
     };
 
     class CAppRenderEvent : public CEvent
@@ -60,7 +60,7 @@ namespace Atlas
         public:
             CAppRenderEvent() = default;
 
-            EVENT_CLASS_TYPE(eEventType::AppRender)
-            EVENT_CLASS_CATEGORY(eEventCategory::EventCategoryApplication)
+            EVENT_CLASS_TYPE(AppRender)
+            EVENT_CLASS_CATEGORY(EventCategoryApplication)
     };
 }

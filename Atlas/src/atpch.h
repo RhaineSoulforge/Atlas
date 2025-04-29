@@ -14,6 +14,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Atlas/ATLogger.h"
+
 #ifdef AT_PLATFORM_WINDOWS
     #include <Windows.h>
 #endif

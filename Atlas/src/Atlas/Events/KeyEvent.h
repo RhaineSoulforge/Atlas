@@ -5,13 +5,12 @@
 
 namespace Atlas
 {
-    class CKeyEvent : public CKeyEvent
+    class CKeyEvent : public CEvent
     {
         public:
             int GetKeyCode(void) const { return m_nKeyCode; }
 
-            EVENT_CLASS_CATEGORY(eEventCategory::EventCategoryKeyboard | eEventCategory::EventCategoryInput)
-
+            EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
          protected:
             CKeyEvent(const int keycode)
                 : m_nKeyCode(keycode)
@@ -40,7 +39,7 @@ namespace Atlas
                 return ss.str();
             }
 
-            EVENT_CLASS_TYPE(eEventType::KeyPressed)
+            EVENT_CLASS_TYPE(KeyPressed)
         private:
             bool m_bRepeat;
     };
@@ -61,14 +60,14 @@ namespace Atlas
                 return ss.str();
             }
 
-            EVENT_CLASS_TYPE(eEventType::KeyReleased)
+            EVENT_CLASS_TYPE(KeyReleased)
     };
 
     class CKeyTypedEvent : public CKeyEvent
     {
         public:
             CKeyTypedEvent(const int keycode)
-                : m_nKeyCode(keycode)
+                : CKeyEvent(keycode)
             {
 
             }
@@ -80,6 +79,6 @@ namespace Atlas
                 return ss.str();
             }
 
-            EVENT_CLASS_TYPE(eEventType::KeyTyped)
+            EVENT_CLASS_TYPE(KeyTyped)
     };
 }

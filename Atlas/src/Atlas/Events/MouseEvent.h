@@ -24,8 +24,8 @@ namespace Atlas
                 return ss.str();
             }
 
-            EVENT_CLASS_TYPE(eEventType::MouseMoved)
-            EVENT_CLASS_CATEGORY(eEventCategory::EventCategoryMouse | eEventCategory::EventCategoryInput)
+            EVENT_CLASS_TYPE(MouseMoved)
+            EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
         private:
             float m_fMouseX;
@@ -51,12 +51,12 @@ namespace Atlas
                 return ss.str();
             }
 
-            EVENT_CLASS_TYPE(eEventType::MouseScrolled)
-            EVENT_CLASS_CATEGORY(eEventCategory::EventCategoryMouse | eEventCategory::EventCategoryInput)
+            EVENT_CLASS_TYPE(MouseScrolled)
+            EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
         private:
-            float m_XOffset;
-            float m_YOffset;
+            float m_fXOffset;
+            float m_fYOffset;
     };
 
     class CMouseButtonEvent : public CEvent
@@ -64,7 +64,7 @@ namespace Atlas
         public:
             int GetMouseButton(void) const { return m_nButton; }
 
-            EVENT_CLASS_CATEGORY(eEventCategory::EventCategoryMouseButton | eEventCategory::EventCategoryInput | eEventCategory::EventCategoryMouseButton)
+            EVENT_CLASS_CATEGORY(EventCategoryMouseButton | EventCategoryInput | EventCategoryMouseButton)
         protected:
             CMouseButtonEvent(const int button) : m_nButton(button)
             {
@@ -89,7 +89,7 @@ namespace Atlas
                 return ss.str();
             }
 
-            EVENT_CLASS_TYPE(eEventType::MouseButtonPressed)
+            EVENT_CLASS_TYPE(MouseButtonPressed)
     };
 
     class CMouseButtonReleasedEvent : public CMouseButtonEvent
@@ -107,6 +107,6 @@ namespace Atlas
                 return ss.str();
             }
 
-            EVENT_CLASS_TYPE(eEventType::MouseButtonReleased)
+            EVENT_CLASS_TYPE(MouseButtonReleased)
     };
 }
