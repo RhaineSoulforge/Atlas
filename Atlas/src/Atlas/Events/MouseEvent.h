@@ -77,7 +77,7 @@ namespace Atlas
     class CMouseButtonPressedEvent : public CMouseButtonEvent
     {
         public:
-            CMouseButtonPressedEvent(const int button) : m_nButton(button)
+            CMouseButtonPressedEvent(const int button) : CMouseButtonEvent(button)
             {
 
             }
@@ -95,7 +95,7 @@ namespace Atlas
     class CMouseButtonReleasedEvent : public CMouseButtonEvent
     {
         public:
-            CMouseButtonReleasedEvent(const int button) : m_nButton(button)
+            CMouseButtonReleasedEvent(const int button) : CMouseButtonEvent(button)
             {
 
             }

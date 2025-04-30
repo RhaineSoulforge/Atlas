@@ -27,8 +27,10 @@ namespace Atlas
             inline HWND GetHandle(void) const { return m_Data.m_hWnd; }
             inline HINSTANCE GetHInstance(void) const { return m_Data.m_hInstance; }
 
-            virtual void Init(const SWindowProps &props);
-            virtual void Shutdown(void);
+            virtual void *GetNativeWindow(void) const override;
+
+            virtual void Init(const SWindowProps &props) override;
+            virtual void Shutdown(void) override;
 
         private:
             static CMSWindow *m_pInstance;

@@ -12,7 +12,10 @@ namespace Atlas
             virtual ~CApplication();
 
             void Run();
+            void OnEvent(CEvent &e);
         private:
+            bool OnWindowClose(CWindowCloseEvent &e);
+            
             CWindow *m_pWindow;
             bool m_bRunning = true;
     };

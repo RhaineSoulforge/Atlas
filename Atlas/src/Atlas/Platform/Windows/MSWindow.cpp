@@ -24,6 +24,11 @@ namespace Atlas
         UnregisterClassA(m_Data.m_sTitle.c_str(),m_Data.m_hInstance);
     }
 
+    void *CMSWindow::GetNativeWindow(void) const
+    {
+        return (void*)this;
+    }
+
     CMSWindow *CMSWindow::GetInstance(void)
     {
         if(!m_pInstance)
@@ -34,7 +39,10 @@ namespace Atlas
     void CMSWindow::DeleteInstance(void)
     {
         if(m_pInstance)
+        {
             delete m_pInstance;
+            AT_LOG_TRACE("CMSWindow::DeleteInstance")
+        }
     }
 
     void CMSWindow::Init(const SWindowProps &props)

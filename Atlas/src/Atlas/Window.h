@@ -3,7 +3,11 @@
 #include "atpch.h"
 
 #include "Atlas/Core.h"
+#include "Atlas/Events/ApplicationEvent.h"
 #include "Atlas/Events/Event.h"
+#include "Atlas/Events/KeyEvent.h"
+#include "Atlas/Events/MouseEvent.h"
+
 namespace Atlas
 {
     struct SWindowProps
@@ -35,6 +39,9 @@ namespace Atlas
             virtual void SetEventCallback(const EventCallbackFn &callback) = 0;
             virtual void SetVSync(bool enabled) = 0;
             virtual bool IsVSync(void) const = 0;
+
+            virtual void Init(const SWindowProps &props) = 0;
+            virtual void Shutdown(void) = 0;
 
             virtual void *GetNativeWindow(void) const = 0;
 
