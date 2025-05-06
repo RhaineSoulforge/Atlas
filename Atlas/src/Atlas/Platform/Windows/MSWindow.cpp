@@ -2,6 +2,8 @@
 #include "Atlas/KeyCodes.h"
 #include "Atlas/MouseButtonCodes.h"
 
+#include <glad/glad.h>
+
 // There can be only One!!
 Atlas::CMSWindow *Atlas::CMSWindow::m_pInstance = 0;
 
@@ -92,7 +94,7 @@ namespace Atlas
         //     AT_LOG_ERROR("Failed to create Window!!!")
         //     return;
         // }
-
+        
         AT_LOG_INFO("Created window Titled {s}:  {u}x{u}, VSync({b})",m_Data.m_sTitle,m_Data.m_unWidth,m_Data.m_unHeight,m_Data.m_bVSync)
     }
 

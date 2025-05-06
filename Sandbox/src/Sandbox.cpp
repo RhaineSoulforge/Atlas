@@ -29,8 +29,6 @@ class CSandbox : public Atlas::CApplication
     public:
         CSandbox(void)
         {
-            Atlas::CATLogger::GetInstance()->Init(Atlas::CATLogger::eLevel::ALL,
-                Atlas::CATLogger::eFlags::CONSOLE | Atlas::CATLogger::eFlags::TIMESTAMP);
             PushLayer(new CExampleLayer());
         }
 
@@ -42,5 +40,7 @@ class CSandbox : public Atlas::CApplication
 
 Atlas::CApplication *Atlas::CreateApplication(void)
 {
-    return new CSandbox();
+            Atlas::CATLogger::GetInstance()->Init(Atlas::CATLogger::eLevel::ALL,
+                Atlas::CATLogger::eFlags::CONSOLE | Atlas::CATLogger::eFlags::TIMESTAMP);
+            return new CSandbox();
 }
