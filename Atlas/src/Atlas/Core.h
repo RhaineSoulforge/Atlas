@@ -16,6 +16,8 @@
     #define AT_ASSERT(x,...)
 #endif
 
+#define AT_BIND_EVENT_FN(fn) std::bind(&fn,this,std::placeholders::_1)
+
 #define SET_BIT(x,y) (x |= y)
 #define CLEAR_BITS(x) (x = 0)
 #define CLEAR_BIT(x,y) (x &= ~y)
