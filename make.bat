@@ -9,7 +9,7 @@ SET links= User32.lib Gdi32.lib Kernel32.lib opengl32.lib
 SET defines= /D NDEBUG /D AT_PLATFORM_WINDOWS /D AT_ENABLE_ASSERTS
 SET files= ../Atlas/src/Atlas/*.cpp ../Atlas/src/Atlas/Platform/Windows/*.cpp ../Sandbox/src/*.cpp ../Atlas/vendor/glad/src/*.c
 
-cl /EHsc /std:c++17 %includes% %defines% %files% %links% /FeSandbox.exe
+cl /EHsc /std:c++17 /MT %includes% %defines% %files% %links% /FeSandbox.exe
 
 popd
 
