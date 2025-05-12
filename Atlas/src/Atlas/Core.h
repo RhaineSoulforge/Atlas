@@ -23,3 +23,6 @@
 #define CLEAR_BIT(x,y) (x &= ~y)
 #define TOGGLE_BIT(x) (x ^= y)
 #define CHECK_BIT(x,y) (((x & y) == y) ? true : false)
+
+#define KEYBUFFERSIZE 256
+#define MOUSEBUFFERSIZE 3

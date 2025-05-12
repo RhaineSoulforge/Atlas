@@ -27,6 +27,14 @@ namespace Atlas
             inline HWND GetHandle(void) const { return m_Data.m_hWnd; }
             inline HINSTANCE GetHInstance(void) const { return m_Data.m_hInstance; }
 
+            inline bool GetKeyState(int keycode) const { return m_bKeyBuffer[keycode]; }
+            inline bool GetMouseButtonState(int button) const { return m_bMouseBuffer[button]; }
+            inline std::pair<float,float> GetMousePosition(void) const { return m_MousePosition; }
+
+            inline void SetKeyState(int keycode, bool state) { m_bKeyBuffer[keycode] = state; }
+            inline void SetMouseButtonState(int button, bool state) { m_bMouseBuffer[button] = state; }
+            inline void SetMousePosition(std::pair<float,float> &position) { m_MousePosition.first = position.first; m_MousePosition.second = position.second; }
+
             virtual void *GetNativeWindow(void) const override;
 
             virtual void Init(const SWindowProps &props) override;
@@ -49,6 +57,9 @@ namespace Atlas
             };
 
             SWindowData m_Data;
+            bool m_bKeyBuffer[KEYBUFFERSIZE];
+            bool m_bMouseBuffer[MOUSEBUFFERSIZE];
+            std::pair<float,float> m_MousePosition;
 
             CMSWindow(void);
             CMSWindow(const CMSWindow&);

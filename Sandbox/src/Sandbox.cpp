@@ -11,11 +11,21 @@ class CExampleLayer : public Atlas::CLayer
         void OnUpdate(void) override
         {
             //AT_LOG_INFO("ExampleLayer::OnUpdate!")
+            if(Atlas::CInput::IsKeyPressed(AT_KEY_TAB))
+                AT_LOG_TRACE("Tab has been pressed!")
         }
 
         void OnEvent(Atlas::CEvent &event)
         {
-            AT_LOG_TRACE("{s}",event.ToString().c_str())
+            //AT_LOG_TRACE("{s}",event.ToString().c_str())
+            if(event.GetEventType() == Atlas::eEventType::MouseButtonPressed)
+            {
+                Atlas::CMouseButtonPressedEvent &e = (Atlas::CMouseButtonPressedEvent&)event;
+                if(e.GetMouseButton() == AT_LBUTTON)
+                {
+                    AT_LOG_TRACE("Left Mouse button pressed!")
+                }
+            }
         }
 
         void OnAttach(void)

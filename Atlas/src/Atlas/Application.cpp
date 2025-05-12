@@ -32,7 +32,7 @@ namespace Atlas
 
         dispatcher.Dispatch<CWindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
         
-        AT_LOG_TRACE("{s}",e.ToString().c_str())
+        //AT_LOG_TRACE("{s}",e.ToString().c_str())
 
         for(auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
         {

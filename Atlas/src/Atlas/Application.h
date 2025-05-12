@@ -4,6 +4,7 @@
 #include "Window.h"
 
 #include "Atlas/LayerStack.h"
+#include "Atlas/Input.h"
 
 namespace Atlas
 {

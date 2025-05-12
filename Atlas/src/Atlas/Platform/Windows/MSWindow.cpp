@@ -18,7 +18,10 @@ namespace Atlas
 
     CMSWindow::CMSWindow(void)
     {
-
+        ZeroMemory(m_bKeyBuffer,KEYBUFFERSIZE);
+        ZeroMemory(m_bMouseBuffer,MOUSEBUFFERSIZE);
+        m_MousePosition.first = 0.0f;
+        m_MousePosition.second = 0.0f;
     }
 
     CMSWindow::~CMSWindow(void)
@@ -159,6 +162,7 @@ namespace Atlas
             case WM_KEYUP:
             {
                 Atlas::CKeyReleasedEvent e(wParam);
+                pWindow->SetKeyState(wParam,false);
                 if(pWindow->m_Data.m_EventCallback)
                     pWindow->m_Data.m_EventCallback(e);
                 return 0;
@@ -166,6 +170,7 @@ namespace Atlas
             case WM_KEYDOWN:
             {
                 Atlas::CKeyPressedEvent e(wParam,1);
+                pWindow->SetKeyState(wParam,true);
                 if(pWindow->m_Data.m_EventCallback)
                     pWindow->m_Data.m_EventCallback(e);                
                 return 0;
@@ -173,6 +178,7 @@ namespace Atlas
             case WM_MOUSEMOVE:
             {
                 Atlas::CMouseMovedEvent e(LOWORD(lParam),HIWORD(lParam));
+                pWindow->SetMousePosition(std::pair<float,float>(LOWORD(lParam), HIWORD(lParam)));
                 if(pWindow->m_Data.m_EventCallback)
                     pWindow->m_Data.m_EventCallback(e);
                 return 0;
@@ -187,36 +193,42 @@ namespace Atlas
             case WM_LBUTTONDOWN:
             {
                 Atlas::CMouseButtonPressedEvent e(AT_LBUTTON);
+                pWindow->SetMouseButtonState(AT_LBUTTON,true);
                 if(pWindow->m_Data.m_EventCallback)
                     pWindow->m_Data.m_EventCallback(e);
             } return 0;
             case WM_MBUTTONDOWN:
             {
                 Atlas::CMouseButtonPressedEvent e(AT_MBUTTON);
+                pWindow->SetMouseButtonState(AT_MBUTTON,true);
                 if(pWindow->m_Data.m_EventCallback)
                     pWindow->m_Data.m_EventCallback(e);
             } return 0;
             case WM_RBUTTONDOWN:
             {
                 Atlas::CMouseButtonPressedEvent e(AT_RBUTTON);
+                pWindow->SetMouseButtonState(AT_RBUTTON,true);
                 if(pWindow->m_Data.m_EventCallback)
                     pWindow->m_Data.m_EventCallback(e);
             } return 0;
             case WM_LBUTTONUP:
             {
                 Atlas::CMouseButtonReleasedEvent e(AT_LBUTTON);
+                pWindow->SetMouseButtonState(AT_LBUTTON,false);
                 if(pWindow->m_Data.m_EventCallback)
                     pWindow->m_Data.m_EventCallback(e);
             } return 0;
             case WM_MBUTTONUP:
             {
                 Atlas::CMouseButtonReleasedEvent e(AT_MBUTTON);
+                pWindow->SetMouseButtonState(AT_MBUTTON,false);
                 if(pWindow->m_Data.m_EventCallback)
                     pWindow->m_Data.m_EventCallback(e);                
             } return 0;
             case WM_RBUTTONUP:
             {
                 Atlas::CMouseButtonReleasedEvent e(AT_RBUTTON);
+                pWindow->SetMouseButtonState(AT_RBUTTON,false);
                 if(pWindow->m_Data.m_EventCallback)
                     pWindow->m_Data.m_EventCallback(e);                
             } return 0;

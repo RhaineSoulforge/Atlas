@@ -9,5 +9,7 @@ namespace Atlas
 
         #define AT_XBUTTON1	0x05	//X1 mouse button
         #define AT_XBUTTON2	0x06	//X2 mouse button
+    #else
+        #error Atlas only supports Windows at this time!
     #endif
 }
