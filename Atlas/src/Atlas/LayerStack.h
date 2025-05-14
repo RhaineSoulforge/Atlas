@@ -22,6 +22,6 @@ namespace Atlas
             std::vector<CLayer*>::iterator end() { return m_Layers.end(); }
         private:
             std::vector<CLayer*> m_Layers;
-            std::vector<CLayer*>::iterator m_LayerInsert;
+            unsigned int m_LayerInsertIndex = 0;
     };
 }
