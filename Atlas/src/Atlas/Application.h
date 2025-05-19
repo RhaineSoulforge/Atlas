@@ -25,6 +25,8 @@ namespace Atlas
             CWindow *m_pWindow;
             bool m_bRunning = true;
             CLayerStack m_LayerStack;
+
+            unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
     };
 
     // To be defined by CLIENT application!

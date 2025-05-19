@@ -113,7 +113,7 @@ namespace Atlas
             DispatchMessage(&message);
         }
 
-        //m_pContext->SwapBuffer();
+        m_pContext->SwapBuffer();
     }
 
     LRESULT CALLBACK CMSWindow::MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
