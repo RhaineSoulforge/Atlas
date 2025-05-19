@@ -6,6 +6,7 @@
 #include "Atlas/Events/KeyEvent.h"
 #include "Atlas/Events/MouseEvent.h"
 #include "Atlas/Window.h"
+#include "Atlas\Renderer\GraphicsContext.h"
 
 namespace Atlas
 {
@@ -42,6 +43,7 @@ namespace Atlas
 
         private:
             static CMSWindow *m_pInstance;
+            CGraphicsContext *m_pContext;
 
             static LRESULT CALLBACK MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 

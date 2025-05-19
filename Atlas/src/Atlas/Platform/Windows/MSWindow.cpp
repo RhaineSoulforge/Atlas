@@ -2,7 +2,7 @@
 #include "Atlas/KeyCodes.h"
 #include "Atlas/MouseButtonCodes.h"
 
-#include <glad/glad.h>
+#include "Atlas/Platform\OpenGL\OpenGLContext.h"
 
 // There can be only One!!
 Atlas::CMSWindow *Atlas::CMSWindow::m_pInstance = 0;
@@ -22,10 +22,13 @@ namespace Atlas
         ZeroMemory(m_bMouseBuffer,MOUSEBUFFERSIZE);
         m_MousePosition.first = 0.0f;
         m_MousePosition.second = 0.0f;
+        m_pContext = 0;
     }
 
     CMSWindow::~CMSWindow(void)
     {
+        if(m_pContext)
+            delete m_pContext;
         UnregisterClassA(m_Data.m_sTitle.c_str(),m_Data.m_hInstance);
     }
 
@@ -72,11 +75,6 @@ namespace Atlas
         wc.lpszClassName = m_Data.m_sTitle.c_str();
 
         AT_ASSERT(RegisterClassA(&wc) == 0,"Unable to Register Window Class!!!");
-        // if(RegisterClassA(&wc) == 0)
-        // {
-        //     AT_LOG_ERROR("Unable to Register Window class!!!")
-        //     return;
-        // }
 
         m_Data.m_hWnd = CreateWindowExA(0,
             m_Data.m_sTitle.c_str(),
@@ -92,11 +90,9 @@ namespace Atlas
             this);
 
         AT_ASSERT(m_Data.m_hWnd == 0,"Failed to create Window!!!");
-        // if(m_Data.m_hWnd == 0)
-        // {
-        //     AT_LOG_ERROR("Failed to create Window!!!")
-        //     return;
-        // }
+
+        m_pContext = new COpenGLContext();
+        m_pContext->Init();
         
         AT_LOG_INFO("Created window Titled {s}:  {u}x{u}, VSync({b})",m_Data.m_sTitle,m_Data.m_unWidth,m_Data.m_unHeight,m_Data.m_bVSync)
     }
@@ -116,6 +112,8 @@ namespace Atlas
             TranslateMessage(&message);
             DispatchMessage(&message);
         }
+
+        //m_pContext->SwapBuffer();
     }
 
     LRESULT CALLBACK CMSWindow::MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
