@@ -5,6 +5,7 @@
 
 #include "Atlas/LayerStack.h"
 #include "Atlas/Input.h"
+#include "Atlas/Renderer/Shader.h"
 
 namespace Atlas
 {
@@ -27,6 +28,7 @@ namespace Atlas
             CLayerStack m_LayerStack;
 
             unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+            CShader *m_pShader;
     };
 
     // To be defined by CLIENT application!
