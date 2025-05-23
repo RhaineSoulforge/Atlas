@@ -6,6 +6,7 @@
 #include "Atlas/LayerStack.h"
 #include "Atlas/Input.h"
 #include "Atlas/Renderer/Shader.h"
+#include "Atlas/Renderer/Buffer.h"
 
 namespace Atlas
 {
@@ -27,7 +28,9 @@ namespace Atlas
             bool m_bRunning = true;
             CLayerStack m_LayerStack;
 
-            unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+            unsigned int m_VertexArray;
+            CVertexBuffer *m_pVertexBuffer;
+            CIndexBuffer *m_pIndexBuffer;
             CShader *m_pShader;
     };
 

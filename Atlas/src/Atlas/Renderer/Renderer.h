@@ -13,5 +13,5 @@ namespace Atlas
             inline static eRendererAPI GetAPI(void) { return s_RendererAPI; }
         private:
             static eRendererAPI s_RendererAPI;
-    }
+    };
 }

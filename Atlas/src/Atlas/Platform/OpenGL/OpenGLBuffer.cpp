@@ -1,11 +1,12 @@
 #include "atpch.h"
-#include "OpengGLBuffer.h"
+#include "OpenGLBuffer.h"
 
 #include <glad/glad.h>
 
 namespace Atlas
 {
     // VertexBuffer
+
     COpenGLVertexBuffer::COpenGLVertexBuffer(float *vertices, uint32_t size)
     {
         glCreateBuffers(1,&m_RendererID);
@@ -29,11 +30,27 @@ namespace Atlas
     }
 
     // IndexBuffer
+
     COpenGLIndexBuffer::COpenGLIndexBuffer(uint32_t *indices, uint32_t count)
         : m_Count(count)
     {
         glCreateBuffers(1,&m_RendererID);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,m_RendererID);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER,count * sizeof(uint32_t),indices,GL_STATIC_DRAW);
+    }
+
+    COpenGLIndexBuffer::~COpenGLIndexBuffer(void)
+    {
+        glDeleteBuffers(1,&m_RendererID);
+    }
+
+    void COpenGLIndexBuffer::Bind(void) const
+    {
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,m_RendererID);
+    }
+
+    void COpenGLIndexBuffer::Unbind(void) const
+    {
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
     }
 }

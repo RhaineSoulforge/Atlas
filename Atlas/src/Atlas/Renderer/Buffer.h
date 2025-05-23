@@ -19,8 +19,8 @@ namespace Atlas
         public:
             virtual ~CIndexBuffer(void) {}
 
-            virtual void Bind(void) = 0;
-            virtual void Unbind(void) = 0;
+            virtual void Bind(void) const = 0;
+            virtual void Unbind(void) const = 0;
 
             virtual uint32_t GetCount() const = 0;
 
