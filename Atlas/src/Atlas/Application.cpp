@@ -5,8 +5,28 @@
 
 namespace Atlas
 {
-
     #define BIND_EVENT_FN(x) std::bind(&CApplication::x, this, std::placeholders::_1)
+
+    static GLenum ShaderDataTypeToOpenGLBaseType(eShaderDataType type)
+    {
+        switch(type)
+        {
+            case eShaderDataType::Float: return GL_FLOAT;
+            case eShaderDataType::Float2: return GL_FLOAT;
+            case eShaderDataType::Float3: return GL_FLOAT;
+            case eShaderDataType::Float4: return GL_FLOAT;
+            case eShaderDataType::Mat3: return GL_FLOAT;
+            case eShaderDataType::Mat4: return GL_FLOAT;
+            case eShaderDataType::Int: return GL_INT;
+            case eShaderDataType::Int2: return GL_INT;
+            case eShaderDataType::Int3: return GL_INT;
+            case eShaderDataType::Int4: return GL_INT;
+            case eShaderDataType::Bool: return GL_BOOL;
+        }
+
+        AT_ASSERT(true,"Unknown eShaderDataType!!!")
+        return 0;
+    }
 
     CApplication::CApplication()
     {

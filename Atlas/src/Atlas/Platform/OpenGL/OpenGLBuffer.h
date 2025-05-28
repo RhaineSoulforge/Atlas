@@ -10,10 +10,14 @@ namespace Atlas
             COpenGLVertexBuffer(float *vertices, uint32_t size);
             virtual ~COpenGLVertexBuffer();
 
-            virtual void Bind(void) const;
-            virtual void Unbind(void) const;
+            virtual void Bind(void) const override;
+            virtual void Unbind(void) const override;
+
+            virtual const CBufferLayout &GetLayout(void) const override { return m_Layout; }
+            virtual void SetLayout(const CBufferLayout &layout) override { m_Layout = layout; }
         private:
             uint32_t m_RendererID;
+            CBufferLayout m_Layout;
     };
 
     class COpenGLIndexBuffer : public CIndexBuffer
