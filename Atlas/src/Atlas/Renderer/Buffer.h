@@ -75,7 +75,7 @@ namespace Atlas
             CBufferLayout(const std::initializer_list<SBufferElement> &elements)
                 : m_Elements(elements)
             {
-                
+                CalculateOffsetAndStride();
             }
 
             inline uint32_t GetStride(void) const { return m_unStride; }
